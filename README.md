@@ -1,5 +1,38 @@
 # Origin Markets Backend Test
 
+### How to run the application
+
+Inside a virtual environment running Python 3:
+- `pip install -r requirements.txt`
+- `./manage.py makemigrations`
+- `./manage.py migrate`
+- `./manage.py createsuperuser` - to create superuser (!!! only superuser can add other users)
+- `./manage.py runserver` to run server.
+- `./manage.py test` to run tests.
+
+#### To dev-test the application:
+
+##### Init
+- create **superuser**
+- open **Postman**
+
+##### To dev-test /users
+- use '`localhost:8000/users/` as URL
+- In **Authorization** tab choose **Basic Auth** and complete the **Username** and **Password** fields using superuser's credentials
+- To add a user choose **POST** method, go to **Body** tab and check **raw** data, then select **JSON** and add the next JSON-object to the body field:
+~~~
+    {
+       "username": "<new_user>",
+       "password": "<user_password>"
+    }
+~~~
+- To get all users list choose **GET** method (!!! requests are allowed only if superuser's credentials are used for authentication)
+
+##### To dev-test /bonds
+- use '`localhost:8000/bonds/` as URL
+- In **Authorization** tab choose **Basic Auth** and complete the **Username** and **Password** fields using the user's credentials (any user)
+- Test the app as required in the specifications
+
 ### Spec:
 
 We would like you to implement an api to: ingest some data representing bonds, query an external api for some additional data, store the result, and make the resulting data queryable via api.
@@ -12,7 +45,7 @@ We would like you to implement an api to: ingest some data representing bonds, q
 #### Project Quickstart
 
 Inside a virtual environment running Python 3:
-- `pip install -r requirement.txt`
+- `pip install -r requirements.txt`
 - `./manage.py runserver` to run server.
 - `./manage.py test` to run tests.
 

@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Bond
+
+@admin.register(Bond)
+class BondAdmin(admin.ModelAdmin):
+    list_display = ['isin', 'size', 'currency', 'maturity', 'lei', 'user']
